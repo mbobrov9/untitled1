@@ -1,0 +1,26 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+<body>
+<header th:insert="blocks/header :: header"></header>
+
+<div class="container" align="center">
+  <form class="form-group" th:method="POST" th:action="@{/login}">
+    <div class="col-xs-2">
+      <label for="username" class="sr-only">Логин</label><br>
+      <input type="text" id="username" name="username" class="form-control" placeholder="Логин" required autofocus>
+    </div>
+    <div class="form-group">
+      <label for="password" class="sr-only">Пароль</label><br>
+      <input type="password" id="password" name="password" class="form-control" placeholder="Пароль" required>
+    </div>
+    <button class="btn btn-lg btn-primary btn-block mb-3" type="submit">Вход</button>
+
+
+  </form>
+</div>
+<footer th:insert="blocks/footer :: footer"></footer>
+</body>
+</html>

@@ -1,0 +1,23 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <title>Законы</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css">
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+<body>
+<header th:insert="blocks/header :: header"></header>
+
+<div class="container mt-5">
+  <div th:each="el : ${request}" class="alert alert-info mt-2">
+    <label>Преступление</label>
+    <p th:text="${el.law.getTitle()}"/>
+
+
+
+    <a id="but1" th:href="'/request/'+${el.id}"class="btn btn-success">Подробнее</a>
+  </div>
+</div>
+<footer th:insert="blocks/footer :: footer"></footer>
+</body>
+</html>

@@ -1,0 +1,41 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Законы</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css">
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+<body>
+<header th:insert="blocks/header :: header"></header>
+
+<div class="container mt-5">
+    <div th:each="el : ${request}" class="alert alert-info mt-2">
+        <label>Заявитель</label>
+        <p th:text="${el.author.username}"/>
+        <form th:action="'/user/'+${el.author.id}" method="post">
+            <button type="submit" class="btn btn-success"> Подробнее о заявителе</button><br>
+        </form>
+        <label>Второй участник</label>
+        <p th:text="${el.second.username}"/>
+        <form th:action="'/user/'+${el.second.id}" method="post">
+            <button type="submit" class="btn btn-success"> Подробнее о виновном</button><br>
+        </form>
+        <h5 th:text="${el.secondary}"/>
+        <label>Тип приступления</label>
+        <p th:text="${el.law.getTitle()}"/>
+        <label>Описание происшествия</label>
+        <p th:text="${el.full_text}"/>
+        <label>Рекомендуемое наказание</label>
+        <p th:text="${el.rec.getTitle()}"/>
+        <h5>Утвердите решение</h5>
+        <form method="post">
+            <p><select name="type">
+                <option th:each="el : ${punish}" th:value="${el.id}" th:text="${el.title}"></option>
+            </select></p><br>
+            <button type="submit" class="btn btn-success"> Утвердить</button><br>
+        </form>
+    </div>
+</div>
+<footer th:insert="blocks/footer :: footer"></footer>
+</body>
+</html>

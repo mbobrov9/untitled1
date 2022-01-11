@@ -1,0 +1,28 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <title>Законы</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css">
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+<body>
+<header th:insert="blocks/header :: header"></header>
+
+<div class="container mt-5 mb-5">
+  <h1>Новая заявка на штаны</h1>
+  <form action="/new_pants" method="post">
+    <input type="number" name="number" placeholder="Введите сколько у вас есть КЦ" class="form-control" required><br>
+
+    <p><select name="type">
+      <option disabled>Выберите тип штанов</option>
+      <option value="Жёлтые">Жёлтые</option>
+      <option value="Малиновые">Малиновые</option>
+
+    </select></p><br>
+    <textarea type="text" name="fulltext" placeholder="Введите почему вам нужны штаны" class="form-control" required></textarea><br>
+    <button type="submit" class="btn btn-success"> Создать заявку</button><br>
+  </form>
+</div>
+<footer th:insert="blocks/footer :: footer"></footer>
+</body>
+</html>

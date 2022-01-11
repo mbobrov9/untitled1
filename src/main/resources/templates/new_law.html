@@ -1,0 +1,30 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <title>Законы</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css">
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+<body>
+<header th:insert="blocks/header :: header"></header>
+
+<div class="container mt-5 mb-5">
+  <h1>Новый закон</h1>
+  <form action="/new_law" method="post">
+    <input type="text" name="name" placeholder="Введите название закона" class="form-control" required><br>
+    <input type="text" name="anons" placeholder="Введите анонс закона" class="form-control" required><br>
+    <p><select name="type">
+      <option disabled>Выберите тип наказания</option>
+      <option th:each="el : ${punish}" th:value="${el.id}" th:text="${el.title}"></option>
+      </option>
+
+    </select></p>
+    <br>
+    <input type="text" name="fulltext" placeholder="Введите текст закона" class="form-control" required></input><br>
+    <input type="hidden" name="_csrf" value="{{_csrf.token}}"required />
+    <button type="submit" class="btn btn-success"> Создать закон</button><br>
+  </form>
+</div>
+<footer th:insert="blocks/footer :: footer"></footer>
+</body>
+</html>

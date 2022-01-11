@@ -1,0 +1,65 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <title>Законы</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css">
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+<body>
+<header th:insert="blocks/header :: header"></header>
+
+<div class="container mt-5">
+  <label>Новые</label>
+  <div th:each="el : ${pants_req}" class="alert alert-info mt-2">
+    <label>Число кц</label>
+    <p th:text="${el.count}"/>
+    <label>Тип штанов</label>
+    <p th:text="${el.type}"/>
+    <label>Описание</label>
+    <p th:text="${el.full_text}"/>
+    <label>Статус</label>
+    <p th:text="${el.decision}"/>
+    <label>Заявитель</label>
+    <p th:text="${el.author.username}"/>
+    <form th:action="'/pants_for_pg/'+${el.id}" method="post">
+      <button id="but1" type="submit" class="btn btn-success"> Отправить на одобрение</button><br>
+    </form>
+  </div>
+  <label>Одобренные</label>
+  <div name="pants_req2" th:each="el : ${pants_req2}" class="alert alert-info mt-2">
+    <label>Число кц</label>
+    <p th:text="${el.count}"/>
+    <label>Тип штанов</label>
+    <p th:text="${el.type}"/>
+    <label>Описание</label>
+    <p th:text="${el.full_text}"/>
+    <label>Статус</label>
+    <p th:text="${el.decision}"/>
+    <label>Заявитель</label>
+    <p th:text="${el.author.username}"/>
+
+    <form th:action="'/pants_for_pgg/'+${el.id}" method="post">
+      <button id="but2" type="submit" class="btn btn-success"> Отправить на фабрику</button><br>
+    </form>
+  </div>
+  <label>Готовые</label>
+  <div name="pants_req3" th:each="el : ${pants_req3}" class="alert alert-info mt-2">
+    <label>Число кц</label>
+    <p th:text="${el.count}"/>
+    <label>Тип штанов</label>
+    <p th:text="${el.type}"/>
+    <label>Описание</label>
+    <p th:text="${el.full_text}"/>
+    <label>Статус</label>
+    <p th:text="${el.decision}"/>
+    <label>Заявитель</label>
+    <p th:text="${el.author.username}"/>
+
+    <form th:action="'/pants_for_pggg/'+${el.id}" method="post">
+      <button id="but3" type="submit" class="btn btn-success"> Принять</button><br>
+    </form>
+  </div>
+</div>
+<footer th:insert="blocks/footer :: footer"></footer>
+</body>
+</html>
