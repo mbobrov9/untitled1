@@ -27,7 +27,7 @@ public class RegistrationController {
     }
 
     @PostMapping("/registration")
-    public String addUser(User user, Map<String, Object> model) {
+    public String addUser(User user, Map<String, Object> model,@RequestParam String Type,@RequestParam String Rolle) {
         User userFromDb = userRepo.findByUsername(user.getUsername());
 
         if (userFromDb != null) {
@@ -37,8 +37,17 @@ public class RegistrationController {
 
         user.setActive(true);
         user.setPants("Нет");
-        user.setType("Чатланин");
-        user.setRoles(Collections.singleton(Role.FAB));
+        user.setType(Type);
+        if (Rolle=="ПЖ")
+        user.setRoles(Collections.singleton(Role.PG));
+        if (Rolle=="Эцилоп")
+            user.setRoles(Collections.singleton(Role.ECILOP));
+        if (Rolle=="ШРО")
+            user.setRoles(Collections.singleton(Role.SHT));
+        if (Rolle=="Фабрика")
+            user.setRoles(Collections.singleton(Role.FAB));
+        if (Rolle=="Плюканин")
+            user.setRoles(Collections.singleton(Role.PLUK));
         userRepo.save(user);
 
         return "redirect:/login";

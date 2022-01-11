@@ -133,8 +133,8 @@ public class pants_controller {
     @PostMapping("/pants_for_fab/{id}")
     public String edit_pants_for_fab(@PathVariable(value = "id") long id,  Model model)  {
         pants_req editpan = Pants_req_repo.findById(id).orElse(new pants_req());
-      //  User us = editpan.getAuthor();
-      //  us.setPants(editpan.getType());
+        User us = editpan.getAuthor();
+        us.setPants(editpan.getType());
         editpan.setDecision("Пошит");
 
         Pants_req_repo.save(editpan);
