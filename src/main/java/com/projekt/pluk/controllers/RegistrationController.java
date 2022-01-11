@@ -39,7 +39,7 @@ public class RegistrationController {
         user.setPants("Нет");
         user.setType(Type);
         if (Rolle=="ПЖ")
-        user.setRoles(Collections.singleton(Role.PG));
+            user.setRoles(Collections.singleton(Role.PG));
         if (Rolle=="Эцилоп")
             user.setRoles(Collections.singleton(Role.ECILOP));
         if (Rolle=="ШРО")
@@ -48,6 +48,7 @@ public class RegistrationController {
             user.setRoles(Collections.singleton(Role.FAB));
         if (Rolle=="Плюканин")
             user.setRoles(Collections.singleton(Role.PLUK));
+
         userRepo.save(user);
 
         return "redirect:/login";

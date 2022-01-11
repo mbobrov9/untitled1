@@ -14,7 +14,13 @@
   <form action="/registration" method="post">
     <div><label> User Name : <input type="text" name="username"/> </label></div>
     <div><label> Password: <input type="password" name="password"/> </label></div>
-    <div><label> Type: <input type="text" name="Type"/> </label></div>
+
+    <p><select name="Type">
+      <option disabled>Выберите тип штанов</option>
+      <option value="Чатланин">Чатланин</option>
+      <option value="Поцак">Поцак</option>
+
+    </select></p><br>
     <p><select name="Rolle">
       <option disabled>Выберите тип штанов</option>
       <option value="ПЖ">ПЖ</option>
