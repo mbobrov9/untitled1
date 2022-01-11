@@ -27,7 +27,7 @@ public class RegistrationController {
     }
 
     @PostMapping("/registration")
-    public String addUser(User user, Map<String, Object> model,@RequestParam String Type,@RequestParam String Rolle) {
+    public String addUser(User user, Map<String, Object> model,@RequestParam String Type,@RequestParam int Rolle) {
         User userFromDb = userRepo.findByUsername(user.getUsername());
 
         if (userFromDb != null) {
@@ -38,15 +38,15 @@ public class RegistrationController {
         user.setActive(true);
         user.setPants("Нет");
         user.setType(Type);
-        if (Rolle=="ПЖ")
+        if (Rolle==1)
             user.setRoles(Collections.singleton(Role.PG));
-        if (Rolle=="Эцилоп")
+        if (Rolle==2)
             user.setRoles(Collections.singleton(Role.ECILOP));
-        if (Rolle=="ШРО")
+        if (Rolle==3)
             user.setRoles(Collections.singleton(Role.SHT));
-        if (Rolle=="Фабрика")
+        if (Rolle==4)
             user.setRoles(Collections.singleton(Role.FAB));
-        if (Rolle=="Плюканин")
+        if (Rolle==5)
             user.setRoles(Collections.singleton(Role.PLUK));
 
         userRepo.save(user);
